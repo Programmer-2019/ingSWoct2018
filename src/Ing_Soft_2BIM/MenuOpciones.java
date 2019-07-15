@@ -26,15 +26,18 @@ import java.util.Scanner;
       System.out.println("*************BIENVENIDO A RENTA-CAR****************");
       System.out.println("OPERACIONES:");
       System.out.println("1. ALQUILER DE VEHICULO.");
-      System.out.println("2. SALIR");
+      System.out.println("2. COTIZAR PRECIO DE ALQUILER DE VEHICULO");
+      System.out.println("3. SALIR");
       System.out.print("¿ESCOJA LA OPCION: ");
       opcionMenu=entrada.nextInt();
       switch(opcionMenu)
       {
           case 1:listado.generarListado();
                  desplegaMenuAlquiler();
-                 break;     
-          case 2:System.out.println("!!GRACIAS POR UTILIZAR LOS SERVICIOS DE RENTA-CAR!!");
+                 break;
+          case 2:desplegaMenuCotizacion();
+                 break;      
+          case 3:System.out.println("!!GRACIAS POR UTILIZAR LOS SERVICIOS DE RENTA-CAR!!");
                  System.out.println("FUE UN GUSTO SERVIRTE, QUE TENGAS UN BUEN DIA.");
                  break;
           default:System.out.println("OPCION INCORRECTA");
@@ -125,5 +128,46 @@ import java.util.Scanner;
                   break;      
       }//fin de switch 
       desplegarMenu(); 
-    }//fin metodo desplegaMenuAlquiler    
+    }//fin metodo desplegaMenuAlquiler
+
+    //inicio metodo desplegaMenuCotizacion
+    private void desplegaMenuCotizacion() 
+    {
+      System.out.println("¿QUE TIPO DE VEHICULO DESEA COTIZAR?");
+      System.out.println("1. COCHE");
+      System.out.println("2. MICROBUS");
+      System.out.println("3. FURGON DE CARGA");
+      System.out.println("4. CAMION");
+      System.out.println("5. MENU PRINCIPAL");
+      System.out.print("¿ESCOJA LA OPCION: ");
+      opcionMenuCotizacion=entrada.nextInt();
+      switch(opcionMenuCotizacion)
+      {
+          case 1:System.out.printf("PRECIO ALQUILER COCHE POR DIA: $%f\n", coche.obtenerPrecioCoche(1));
+                 System.out.println();       
+                 desplegaMenuCotizacion();
+                 break;
+          case 2:System.out.printf("PRECIO ALQUILER MICROBUS POR DIA: $%f\n", microbus.obtenerPrecioMicrobus(1));
+                 System.out.println();       
+                 desplegaMenuCotizacion();
+                 break;
+          case 3:System.out.printf("PRECIO ALQUILER FURGON DE CARGA POR DIA: $%f\n", furgoneta.obtenerPrecioFurgoneta(1));
+                 System.out.println();       
+                 desplegaMenuCotizacion(); 
+                 break;
+          case 4:System.out.printf("PRECIO ALQUILER CAMION POR DIA: $%f\n", camion.obtenerPrecioCamion(1));
+                 System.out.println();       
+                 desplegaMenuCotizacion(); 
+                 break;
+          case 5:desplegarMenu();
+                 break;
+          default:System.out.println("OPCION INCORRECTA");
+                  System.out.println();
+                  desplegarMenu();
+                  break;   
+      }//fin switch
+    }//fin metodo desplegaMenuCotizacion 
+    
+    
+    
 }//fin de class MenuOpciones
